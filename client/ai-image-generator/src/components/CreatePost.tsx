@@ -1,13 +1,14 @@
-import { Button, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import GeneratedImageCard from "./GeneratedImageCard";
+import GenerateImage from "./GenerateImage";
+import NavBar from "./NavBar";
 
 const CreatePost = () => {
   return (
     <div>
-      <Link to="/">
-        <Button variant="contained">Explore Post</Button>
-      </Link>
-      <Typography variant="h1">khan</Typography>
+      {" "}
+      <NavBar />
+      <GenerateImage />
+      <GeneratedImageCard />
     </div>
   );
 };

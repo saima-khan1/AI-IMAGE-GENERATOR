@@ -3,7 +3,7 @@ import CreatePost from "../components/CreatePost";
 const Chatbot = () => {
   return (
     <div>
-      <CreatePost />
+      <CreatePost />{" "}
     </div>
   );
 };
