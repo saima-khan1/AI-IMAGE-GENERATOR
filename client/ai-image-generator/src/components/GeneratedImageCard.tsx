@@ -17,7 +17,7 @@ const GeneratedImageCard: React.FC<GeneratedImageCardProps> = ({
           <>
             {" "}
             <CircularProgress />
-            <Typography>Loading</Typography>
+            <Typography>Generating Your Image...</Typography>
           </>
         ) : src ? (
           <img
