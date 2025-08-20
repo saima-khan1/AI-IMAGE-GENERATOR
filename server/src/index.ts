@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import * as dotenv from "dotenv";
+import router from "./routes/Post";
+import generateImageRouter from "./routes/GenerateImage";
 
 dotenv.config();
 
@@ -9,7 +11,9 @@ const app = express();
 const PORT = 3001;
 app.use(express.json({ limit: "50mb" }));
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use("/api/post", router);
+app.use("/api/generateImage", generateImageRouter);
 
 const connectDB = async () => {
   try {
