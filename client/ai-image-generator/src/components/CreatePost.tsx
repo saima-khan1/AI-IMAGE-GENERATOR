@@ -24,7 +24,6 @@ const CreatePost = () => {
         generateImageLoading={generateImageLoading}
         setGenerateImageLoading={setGenerateImageLoading}
       />
-      <GeneratedImageCard src={post?.photo} loading={generateImageLoading} />
     </div>
   );
 };

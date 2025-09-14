@@ -1,7 +1,8 @@
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, Container, TextField, Typography } from "@mui/material";
 import { GeneratingAIImage } from "../services/fetchApi";
 import { error } from "console";
+import GeneratedImageCard from "./GeneratedImageCard";
 
 interface Post {
   name: string;
@@ -44,14 +45,32 @@ const GenerateImage: React.FC<GenerateImageProps> = ({
     setCreatePostLoading(true);
   };
   return (
-    <div>
-      <Typography variant="h3">Generate Image With Prompt</Typography>
-      <Typography variant="h6">
+    <Container
+      maxWidth="xl"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        bgcolor: "#f9f9f9",
+        border: "1px solid #333",
+        borderRadius: "12px",
+        p: 3,
+        mt: 4,
+
+        height: "100vh",
+      }}
+    >
+      <Typography variant="h3" fontFamily={"fantasy"} color="black">
+        Generate Image With Prompt
+      </Typography>
+      <Typography variant="h6" fontFamily={"monospace"}>
         Write your Prompt according to the image you want to generate !
       </Typography>
 
       <form>
-        <Typography variant="h6">AUTHOR</Typography>
+        <Typography variant="h6" fontFamily={"monospace"}>
+          AUTHOR
+        </Typography>
         <TextField
           placeholder="Enter your name"
           rows={1}
@@ -60,7 +79,9 @@ const GenerateImage: React.FC<GenerateImageProps> = ({
           onChange={(e) => setPost({ ...post, name: e.target.value })}
         />
 
-        <Typography variant="h6">Image Prompt</Typography>
+        <Typography variant="h6" fontFamily={"monospace"}>
+          Image Prompt
+        </Typography>
         <TextField
           placeholder="Write a detailed prompt about the image"
           multiline
@@ -71,7 +92,11 @@ const GenerateImage: React.FC<GenerateImageProps> = ({
           onChange={(e) => setPost({ ...post, prompt: e.target.value })}
         />
 
-        <Typography variant="body2" sx={{ mt: 2, mb: 1 }}>
+        <Typography
+          variant="body2"
+          sx={{ mt: 2, mb: 1 }}
+          fontFamily={"monospace"}
+        >
           **You can post AI generated image to community**
         </Typography>
 
@@ -98,8 +123,9 @@ const GenerateImage: React.FC<GenerateImageProps> = ({
           <CreateRounded />
           {createPostLoading ? "Posting..." : "Post Image"}
         </Button>
+        <GeneratedImageCard src={post?.photo} loading={generateImageLoading} />
       </form>
-    </div>
+    </Container>
   );
 };
 

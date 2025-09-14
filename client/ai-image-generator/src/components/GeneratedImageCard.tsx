@@ -11,13 +11,24 @@ const GeneratedImageCard: React.FC<GeneratedImageCardProps> = ({
   loading,
 }) => {
   return (
-    <Card sx={{ maxWidth: 500, height: "500px", textAlign: "center", p: 2 }}>
+    <Card
+      sx={{
+        maxWidth: 1000,
+        height: "500px",
+        textAlign: "center",
+        p: 2,
+        mt: "50PX",
+        width: 1000,
+      }}
+    >
       <CardContent>
         {loading ? (
           <>
             {" "}
             <CircularProgress />
-            <Typography>Generating Your Image...</Typography>
+            <Typography fontFamily={"monospace"}>
+              Generating Your Image...
+            </Typography>
           </>
         ) : src ? (
           <img
@@ -26,7 +37,11 @@ const GeneratedImageCard: React.FC<GeneratedImageCardProps> = ({
             style={{ width: "100%", borderRadius: "8px" }}
           />
         ) : (
-          <Typography variant="body2" color="textSecondary">
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            fontFamily={"monospace"}
+          >
             No image generated yet
           </Typography>
         )}
