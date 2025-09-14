@@ -24,18 +24,44 @@ const cardData = [
 
 const Cards = () => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={6}>
       {cardData.map((card, index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
-          <Card sx={{ width: "100%" }}>
+          {/* <Card
+            sx={{
+              height: 350,
+             
+              borderRadius: 3,
+              boxShadow: 4,
+              display: "flex",
+              flexDirection: "column",
+              bgcolor: "#1e1e1e",
+              color: "#fff",
+            }}
+          > */}
+          <Card
+            sx={{
+              minWidth: 400,
+              marginTop: "100px",
+              borderRadius: 3,
+              boxShadow: 4,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <CardMedia
               component="img"
-              height="160"
+              sx={{
+                height: 220,
+                objectFit: "cover",
+              }}
               image={card.image}
               alt={card.title}
             />
-            <CardContent>
-              <Typography variant="h6">{card.title}</Typography>
+            <CardContent sx={{ flexGrow: 1 }}>
+              <Typography variant="body2" sx={{ color: "gray" }} noWrap>
+                {card.title}
+              </Typography>
               <Typography variant="body2">{card.description}</Typography>
             </CardContent>
           </Card>

@@ -65,10 +65,8 @@ export const createPost = async (
     let photoUrl;
 
     if (photo.startsWith("http")) {
-      // ✅ Already a hosted Cloudinary URL → just use it directly
       photoUrl = photo;
     } else {
-      // ✅ Only upload if it's base64 or raw image data
       const uploaded = await cloudinary.uploader.upload(photo, {
         folder: "posts",
       });

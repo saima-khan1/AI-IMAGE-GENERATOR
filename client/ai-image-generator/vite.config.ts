@@ -10,4 +10,9 @@ export default defineConfig({
       crypto: require.resolve("crypto-browserify"),
     },
   },
+  server: {
+    proxy: {
+      "/api": "http://localhost:3001",
+    },
+  },
 });

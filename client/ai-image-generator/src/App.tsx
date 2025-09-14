@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
-import ChatBot from "./pages/ChatBot";
+import ChatBot from "./pages/CreatePost";
 
 function App() {
   return (
