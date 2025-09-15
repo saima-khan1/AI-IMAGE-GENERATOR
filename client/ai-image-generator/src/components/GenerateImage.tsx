@@ -1,7 +1,7 @@
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { GeneratingAIImage } from "../services/fetchApi";
-import { error } from "console";
+
 import GeneratedImageCard from "./GeneratedImageCard";
 
 interface Post {
@@ -33,7 +33,7 @@ const GenerateImage: React.FC<GenerateImageProps> = ({
       .then((res) => {
         setPost({
           ...post,
-          photo: ` data:image/jpge;bade64,${res?.data?.photo}`,
+          photo: `${res?.data?.photo}`,
         }),
           setGenerateImageLoading(false);
       })

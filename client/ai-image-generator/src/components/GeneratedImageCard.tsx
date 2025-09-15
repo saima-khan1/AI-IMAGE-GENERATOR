@@ -13,12 +13,11 @@ const GeneratedImageCard: React.FC<GeneratedImageCardProps> = ({
   return (
     <Card
       sx={{
-        maxWidth: 1000,
-        height: "500px",
+        height: "auto",
         textAlign: "center",
         p: 2,
         mt: "50PX",
-        width: 1000,
+        width: 950,
       }}
     >
       <CardContent>
@@ -34,7 +33,11 @@ const GeneratedImageCard: React.FC<GeneratedImageCardProps> = ({
           <img
             src={src}
             alt="Generated"
-            style={{ width: "100%", borderRadius: "8px" }}
+            style={{
+              width: "750px",
+              height: "500px",
+              borderRadius: "8px",
+            }}
           />
         ) : (
           <Typography
