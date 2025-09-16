@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import { createError } from "../error";
 import Post from "../models/Post";

@@ -1,8 +1,9 @@
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
 import { Button, Container, TextField, Typography } from "@mui/material";
-import { GeneratingAIImage } from "../services/fetchApi";
+import { CreatePost, GeneratingAIImage } from "../services/fetchApi";
 
 import GeneratedImageCard from "./GeneratedImageCard";
+import { useNavigate } from "react-router-dom";
 
 interface Post {
   name: string;
@@ -27,6 +28,7 @@ const GenerateImage: React.FC<GenerateImageProps> = ({
   generateImageLoading,
   setGenerateImageLoading,
 }) => {
+  const navigate = useNavigate();
   const generateImageFun = async () => {
     setGenerateImageLoading(true);
     await GeneratingAIImage({ prompt: post.prompt })
@@ -41,8 +43,18 @@ const GenerateImage: React.FC<GenerateImageProps> = ({
         console.log(error);
       });
   };
-  const CreatePostFun = () => {
-    setCreatePostLoading(true);
+  const CreatePostFun = async () => {
+    try {
+      setCreatePostLoading(true);
+
+      const res = await CreatePost(post);
+      navigate("/");
+      console.log("Post created:", res.data);
+    } catch (err) {
+      console.error("Error creating post:", err);
+    } finally {
+      setCreatePostLoading(false);
+    }
   };
   return (
     <Container

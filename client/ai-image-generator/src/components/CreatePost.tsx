@@ -1,5 +1,5 @@
 import { useState } from "react";
-import GeneratedImageCard from "./GeneratedImageCard";
+
 import GenerateImage from "./GenerateImage";
 import NavBar from "./NavBar";
 
