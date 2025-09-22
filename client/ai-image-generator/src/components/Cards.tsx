@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Card, CardMedia, Grid } from "@mui/material";
 
 interface Post {
   _id: string;
@@ -30,8 +30,8 @@ const Cards = ({ data }: CardsProps) => {
               image={post.photo}
               alt={post.prompt}
               sx={{
-                height: 250, // make height same as card if you want full coverage
-                width: "100%", // full width
+                height: 250,
+                width: "100%",
                 objectFit: "cover",
               }}
             />
