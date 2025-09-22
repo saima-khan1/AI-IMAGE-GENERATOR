@@ -1,11 +1,34 @@
 import { Box, Button, Container, InputBase, Typography } from "@mui/material";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { GetPosts } from "../services/fetchApi";
 import Cards from "./Cards";
+// import Cards from "./Cards";
 
+interface PostType {
+  _id: string;
+  name: string;
+  prompt: string;
+  photo: string;
+}
 const Landing = () => {
   const [search, setSearch] = useState();
   const [searchImage, setSearchImage] = useState();
+  const [posts, setPosts] = useState<PostType[]>([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await GetPosts();
+
+        setPosts(res.data.data || []);
+        console.log(res.data, "data");
+      } catch (error) {
+        console.log(error, "err");
+      }
+    };
+    getData();
+  }, []);
   const handleSearch = () => {
     setSearch(search);
     console.log("clicked");
@@ -62,7 +85,40 @@ const Landing = () => {
           Search
         </Button>
       </Box>
-      <Cards />
+
+      <Cards data={posts} />
+      {/* <ul style={{ listStyle: "none", padding: 0 }}>
+        {posts.map((post) => (
+          <li
+            key={post._id}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "16px",
+              padding: "8px",
+              border: "1px solid #ccc",
+              borderRadius: "8px",
+              backgroundColor: "#fff",
+            }}
+          >
+            <img
+              src={post.photo}
+              alt={post.prompt}
+              style={{
+                width: 100,
+                height: 100,
+                objectFit: "cover",
+                borderRadius: "8px",
+                marginRight: "16px",
+              }}
+            />
+            <div>
+              <strong>{post.name}</strong>
+              <p style={{ margin: 0 }}>{post.prompt}</p>
+            </div>
+          </li>
+        ))}
+      </ul> */}
     </Container>
   );
 };

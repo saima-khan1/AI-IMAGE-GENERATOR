@@ -1,69 +1,40 @@
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import CardMedia from "@mui/material/CardMedia";
+import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 
-const cardData = [
-  {
-    title: "Card 1",
-    description: "This is the first card.",
-    image: "https://via.placeholder.com/300x200",
-  },
-  {
-    title: "Card 2",
-    description: "This is the second card.",
-    image: "https://via.placeholder.com/300x200",
-  },
-  {
-    title: "Card 3",
-    description: "This is the third card.",
-    image: "https://via.placeholder.com/300x200",
-  },
-];
+interface Post {
+  _id: string;
+  name: string;
+  prompt: string;
+  photo: string;
+}
 
-const Cards = () => {
+interface CardsProps {
+  data: Post[];
+}
+
+const Cards = ({ data }: CardsProps) => {
   return (
-    <Grid container spacing={6}>
-      {cardData.map((card, index) => (
-        <Grid item xs={12} sm={6} md={4} key={index}>
-          {/* <Card
-            sx={{
-              height: 350,
-             
-              borderRadius: 3,
-              boxShadow: 4,
-              display: "flex",
-              flexDirection: "column",
-              bgcolor: "#1e1e1e",
-              color: "#fff",
-            }}
-          > */}
+    <Grid container spacing={3} justifyContent="center">
+      {data.map((post) => (
+        <Grid item xs={12} sm={6} md={4} lg={3} key={post._id}>
           <Card
             sx={{
-              minWidth: 400,
-              marginTop: "100px",
               borderRadius: 3,
-              boxShadow: 4,
+              boxShadow: 3,
               display: "flex",
               flexDirection: "column",
+              overflow: "hidden",
             }}
           >
             <CardMedia
               component="img"
+              image={post.photo}
+              alt={post.prompt}
               sx={{
-                height: 220,
+                height: 250, // make height same as card if you want full coverage
+                width: "100%", // full width
                 objectFit: "cover",
               }}
-              image={card.image}
-              alt={card.title}
             />
-            <CardContent sx={{ flexGrow: 1 }}>
-              <Typography variant="body2" sx={{ color: "gray" }} noWrap>
-                {card.title}
-              </Typography>
-              <Typography variant="body2">{card.description}</Typography>
-            </CardContent>
           </Card>
         </Grid>
       ))}
